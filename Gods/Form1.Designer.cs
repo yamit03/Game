@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.first = new System.Windows.Forms.Label();
             this.second = new System.Windows.Forms.Label();
             this.tmr = new System.Windows.Forms.Timer(this.components);
@@ -37,6 +38,8 @@
             this.scr2 = new System.Windows.Forms.Label();
             this.turnof = new System.Windows.Forms.Label();
             this.turnofpl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.win = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // first
@@ -66,7 +69,7 @@
             // 
             // tmr
             // 
-            this.tmr.Interval = 1000;
+            this.tmr.Interval = 200;
             this.tmr.Tick += new System.EventHandler(this.Tmr_Tick);
             // 
             // line
@@ -74,7 +77,7 @@
             this.line.BackColor = System.Drawing.Color.Transparent;
             this.line.Font = new System.Drawing.Font("Algerian", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.line.ForeColor = System.Drawing.Color.White;
-            this.line.Location = new System.Drawing.Point(70, -21);
+            this.line.Location = new System.Drawing.Point(35, 9);
             this.line.Name = "line";
             this.line.Size = new System.Drawing.Size(1165, 134);
             this.line.TabIndex = 1;
@@ -125,12 +128,36 @@
             this.turnofpl.TabIndex = 6;
             this.turnofpl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Image = global::Gods.Properties.Resources.k;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(3, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(2076, 1102);
+            this.button1.TabIndex = 8;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // win
+            // 
+            this.win.BackColor = System.Drawing.Color.Transparent;
+            this.win.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.win.ForeColor = System.Drawing.Color.Red;
+            this.win.Location = new System.Drawing.Point(355, 161);
+            this.win.Name = "win";
+            this.win.Size = new System.Drawing.Size(554, 350);
+            this.win.TabIndex = 9;
+            this.win.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Gods.Properties.Resources.olympus;
-            this.ClientSize = new System.Drawing.Size(1924, 513);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.Controls.Add(this.win);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.turnofpl);
             this.Controls.Add(this.turnof);
             this.Controls.Add(this.scr2);
@@ -154,6 +181,8 @@
         private System.Windows.Forms.Label scr2;
         private System.Windows.Forms.Label turnof;
         private System.Windows.Forms.Label turnofpl;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label win;
     }
 }
 

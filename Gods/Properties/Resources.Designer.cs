@@ -63,6 +63,16 @@ namespace Gods.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap game {
+            get {
+                object obj = ResourceManager.GetObject("game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap god1 {
             get {
                 object obj = ResourceManager.GetObject("god1", resourceCulture);
@@ -266,6 +276,16 @@ namespace Gods.Properties {
         internal static System.Drawing.Bitmap gods {
             get {
                 object obj = ResourceManager.GetObject("gods", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap k {
+            get {
+                object obj = ResourceManager.GetObject("k", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

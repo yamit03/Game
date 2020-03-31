@@ -10,8 +10,7 @@ using System.Windows.Forms;
 using System.Timers;
 
 namespace Gods
-{
-    
+{ 
     public partial class Form1 : Form
     {
 
@@ -23,13 +22,15 @@ namespace Gods
             InitializeComponent();
         }
 
-
+       int time2=1;
         private void Form1_Load(object sender, EventArgs e)
         {
+          
             buildpicture(40);
             Shuffle();
             showboard(5, 8);
             turnofpl.Text = 1 + "";
+           
         }
 
         private void Shuffle()
@@ -47,7 +48,7 @@ namespace Gods
 
         private void showboard(int row, int col)
         {
-            int x = 85, y = 85;
+            int x = 65, y = 150;
             int place = 0;
             for (int i = 0; i < row; i++)
             {
@@ -59,7 +60,7 @@ namespace Gods
                     Controls.Add(allp[place++]);
 
                 }
-                x = 85;
+                x = 65;
                 y += 85;
             }
         }
@@ -93,19 +94,18 @@ namespace Gods
         int nikod = 0, nikod2 = 0;
         bool turnwho = true;
 
-        int time = 5;
+        int time = 1,count3=0;
         private void allp_Click(object sender, EventArgs e)
         {
-            
+            if (!tmr.Enabled )
+            {
                 PictureBox p = (PictureBox)sender;
 
                 p.Image = (Image)Properties.Resources.ResourceManager.GetObject("god" + (p.Tag));
-                tmr.Enabled = true;
+                
+                   
                 count++;
-            
-            
-
-                //Timer timer = new Timer(new TimerCallback(timerCb), null, 2000, 0);
+         
 
                 arrpic[count - 1] = p;
 
@@ -113,50 +113,55 @@ namespace Gods
                 if (count == 2)
                 {
                     count = 0;
-               
-                if (arrpic[0].Tag.Equals(arrpic[1].Tag))
-                {
-                   
-                    for (int i = 0; i < 2; i++)
+                    time = 1;
+                    tmr.Enabled = true;
+                    if (arrpic[0].Tag.Equals(arrpic[1].Tag))
                     {
 
-                        arrpic[i].Visible = false;
-                        arrpic[i] = null;
+                        for (int i = 0; i < 2; i++)
+                        {
 
-                    }
-                    if (turnwho == true)
-                    {
-                        nikod++;
-                        first.Text = nikod + "";
-                    }
-                    else
-                    {
-                        nikod2++;
-                        second.Text = nikod2 + "";
-                    }
-                }
+                            arrpic[i].Visible = false;
+                            arrpic[i] = null;
 
-                else
-                {
-                  
-                    for (int i = 0; i < 2; i++)
-                    {
-                       
-                        Turn(arrpic[i]);
-                       arrpic[i] = null;
-
+                        }
+                        if (turnwho == true)
+                        {
+                            nikod++;
+                            first.Text = nikod + "";
+                        }
+                        else
+                        {
+                            nikod2++;
+                            second.Text = nikod2 + "";
+                        }
                     }
 
-                }
+
                     turnwho = !turnwho;//הופך שחקן
+                    count3++;
                     if (turnwho == true)
+                    
                         turnofpl.Text = 1 + "";
+                    
                     else
+                     
                         turnofpl.Text = 2 + "";
+               
+                 }
+
+                if(Check()==true)
+                {
+                    win.Visible = true;
+                    if(nikod>nikod2)
+                    win.Text = "the winner is PLAYER 1";
+                    if (nikod < nikod2)
+                        win.Text = "the winner is PLAYER 2";
+                    if (nikod == nikod2)
+                        win.Text = "Its a TIE";
                 }
 
-
-
+            }
             
         }
 
@@ -164,7 +169,15 @@ namespace Gods
         {
 
         }
-
+        public bool Check()
+        {
+            for (int i = 0; i < allp.Length; i++)
+            {
+                if (allp[i].Visible== true)
+                    return false;
+            }
+            return true;
+        }
         private void First_Click(object sender, EventArgs e)
         {
 
@@ -187,17 +200,35 @@ namespace Gods
 
         private void Tmr_Tick(object sender, EventArgs e)
         {
-            
+
             if (time == -1)
-                tmr.Enabled = false;
-           else
-               time--;
+            {
+               
+                time = 1;
+                Turn(arrpic[0]);
+                Turn(arrpic[1]);
+               tmr.Enabled = false;
+            }
+            else
+                time--;
             
+        }
+
+        private void Pboppen_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            button1.Visible = false;
         }
 
         public void Turn(PictureBox p)
         {
-            p.Image = Properties.Resources.opening;
+            if(p!=null)
+                p.Image = Properties.Resources.opening;
         }
 
 
